@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    搜索结果列表
+{% endblock %}
+
+
+{% block left %}
+
+
+    <div id="main">
+
+        <div class="archives">
+
+            {% if query %}
+            {% for post in page.object_list %}
+
+                <article class="archive-article archive-type-post">
+                  <div class="archive-article-inner">
+                    <header class="archive-article-header">
+                    <a href="#" class="archive-article-date">
+                         <time>{{ post.object.created|date:'Y-m' }}</time>
+                    </a>
+
+                     <h1 itemprop="name">
+                          <a class="archive-article-title" target="_blank" href="/post/{{ post.object.id }}">{{ post.object.title }}</a>
+                     </h1>
+                     </header>
+                  </div>
+                </article>
+            {% empty %}
+                未查询到结果信息。
+
+            {% endfor %}
+
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{#    <h2>Search</h2>#}
+{# #}
+{#    <form method="get" action=".">#}
+{#        <table>#}
+{#            {{ form.as_table }}#}
+{#            <tr>#}
+{#                <td> </td>#}
+{#                <td>#}
+{#                    <input type="submit" value="Search">#}
+{#                </td>#}
+{#            </tr>#}
+{#        </table>#}
+{# #}
+{#        {% if query %}#}
+{#            <h3>Results</h3>#}
+{# #}
+{#            {% for result in page.object_list %}#}
+{#                <p>#}
+{#                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>#}
+{#                </p>#}
+{#            {% empty %}#}
+{#                <p>No results found.</p>#}
+{#            {% endfor %}#}
+{# #}
+{#            {% if page.has_previous or page.has_next %}#}
+{#                <div>#}
+{#                    {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}« Previous{% if page.has_previous %}</a>{% endif %}#}
+{#                    |#}
+{#                    {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}Next »{% if page.has_next %}</a>{% endif %}#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        {% else %}#}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+{#        {% endif %}#}
+{#    </form>#}

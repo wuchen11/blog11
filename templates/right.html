@@ -1,0 +1,64 @@
+ <aside id="sidebar">
+     <!--分类-->
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+          {% for cp in r_catepose %}
+            <li class="category-list-item">
+              <a class="category-list-link" href="/category/{{ cp.category }}">{{ cp.category__cname }}</a>
+              <span class="category-list-count">{{ cp.c }}</span>
+            </li>
+          {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+     <!--归档-->
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list">
+          {% for rd in r_fill_post %}
+                <li class="archive-list-item">
+                  <a class="archive-list-link" href="/archive/{{ rd.0|date:'Y' }}/{{ rd.0|date:'m' }}">{{rd.0}}</a>
+                  <span class="archive-list-count">{{ rd.1 }}</span>
+                </li>
+          {% endfor%}
+      </ul>
+    </div>
+  </div>
+
+    <!--近期文章-->
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        {% for near in r_near %}
+            <li>
+                <!-- truncatechars是过滤器,显示的字符数 -->
+                <a href="/post/{{ near.id }}" target="_blank">{{ near.title | truncatechars:22 }}</a>
+            </li>
+        {% endfor %}
+
+
+      </ul>
+    </div>
+  </div>
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+          <li>
+            <a href="http://www.baidu.com/" target="_blank">百度</a>
+          </li>
+          <li>
+            <a href="http://www.google.com/" target="_blank">google</a>
+          </li>
+          <li>
+            <a href="https://www.csdn.net/" target="_blank">CSDN</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</aside>
